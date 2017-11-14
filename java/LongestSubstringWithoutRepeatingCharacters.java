@@ -10,23 +10,23 @@ public class LongestSubstringWithoutRepeatingCharacters {
         if (s == null || s.isEmpty()) {
             return 0;
         }
-        int res = 1;
+        int maxLength = 1;
         Set<Character> charSet = new HashSet<>();
         charSet.add(s.charAt(0));
         int currentIndex = 1;
         int len = s.length();
         int previousIndex = 0;
-        while (currentIndex < len && len - previousIndex > res) {
+        while (currentIndex < len && len - previousIndex > maxLength) {
             if (charSet.contains(s.charAt(currentIndex))) {
                 charSet.remove(s.charAt(previousIndex));
                 previousIndex++;
             } else {
                 charSet.add(s.charAt(currentIndex));
-                res = Math.max(res, currentIndex-previousIndex+1);
+                maxLength = Math.max(maxLength, currentIndex-previousIndex+1);
                 currentIndex++;
             }
         }
-        return res;
+        return maxLength;
     }
 
     public static void main(String[] args) {
