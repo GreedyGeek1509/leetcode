@@ -12,11 +12,9 @@ public class HelloWorld {
 //        i = 7;
 //        System.out.println(i);
 //        System.out.println(Character.digit('a', 10));
-//        int i = Integer.MIN_VALUE;
-//        System.out.println(i);
-        int i = 0;
-        while (i < 4) {
-            System.out.println(i++);
-        }
+        int i = Integer.MAX_VALUE;
+       System.out.println(i/1000000000);
+
     }
 }
+
