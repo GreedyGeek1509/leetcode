@@ -1,3 +1,6 @@
 leetcode.iml
 .idea
 *.class
+*.iml
+*vcs.xml
+*/.idea/
