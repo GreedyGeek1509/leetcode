@@ -20,4 +20,4 @@ class Solution:
 
 
 if __name__ == '__main__':
-    print(Solution().reverse(2147483648))
+    print(Solution().reverse(-1234))
