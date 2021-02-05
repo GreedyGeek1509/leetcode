@@ -10,19 +10,21 @@ class TreeNode:
 
 class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
-
-        result = list()
-
-        def level_traverse(tr: TreeNode, level: int):
+        def bfs_with_queue(tr: TreeNode) -> List[List[int]]:
+            r = []
             if not tr:
-                return
-            if level < len(result):
-                result[level].append(tr.val)
-            else:
-                result.append([tr.val])
-
-            level_traverse(tr.left, level+1)
-            level_traverse(tr.right, level+1)
-
-        level_traverse(root, 0)
-        return result
+                return r
+            queue = [tr]
+            while len(queue) > 0:
+                length = len(queue)
+                level_list = list()
+                for i in range(length):
+                    popped = queue.pop(0)
+                    level_list.append(popped.val)
+                    if popped.left:
+                        queue.append(popped.left)
+                    if popped.right:
+                        queue.append(popped.right)
+                r.append(level_list)
+            return r
+        return bfs_with_queue(root)
