@@ -2,6 +2,7 @@ class Solution:
     def numDistinct(self, s: str, t: str):
         s_len, t_len = len(s), len(t)
         dp = {}
+
         def solve(s_idx: int, t_idx: int) -> int:
             if (s_idx, t_idx) in dp:
                 return dp[(s_idx, t_idx)]
