@@ -3,22 +3,19 @@ from typing import List
 
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        if s in wordDict:
+            return True
         length = len(s)
-        dp = []
-        for i in range(length):
-            dp.append([False]*length)
-        # fill for length 1 substrings
-        for i in range(length):
-            dp[i][i] = s[i] in wordDict
+        dp = [False]*(length+1)
+        dp[0] = True
+        dct = set(wordDict)
+        for i in range(1, length+1):
+            if s[:i] in dct:
+                dp[i] = True
+                continue
+            for j in range(i):
+                if dp[j] and s[j:i] in dct:
+                    dp[i] = True
+                    break
 
-        for sublength in range(2, length+1):
-            for start_idx in range(length-sublength+1):
-                end_idx = start_idx + sublength - 1
-                dp[start_idx][end_idx] = s[start_idx:end_idx+1] in wordDict
-                for k in range(start_idx, end_idx):
-                    if not dp[start_idx][end_idx]:
-                        dp[start_idx][end_idx] = dp[start_idx][k] and dp[k+1][end_idx]
-                    else:
-                        break
-
-        return dp[0][length-1]
+        return dp[length]
