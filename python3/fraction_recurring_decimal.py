@@ -19,3 +19,7 @@ class Solution:
             res += str((r*10)//denominator)
             r = (r*10)%denominator
         return res
+
+
+if __name__ == '__main__':
+    print(Solution().fractionToDecimal(12, 7))
